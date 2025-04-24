@@ -160,8 +160,8 @@ nav ul li a.active {
 /* Auth Buttons Styles */
 #authLink, #signupLink {
     background-color: transparent;
-    border: 1px solid var(--white);
-    color: var(--white);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
     padding: 0.4rem 0.8rem !important;
     font-size: 0.9rem !important;
     border-radius: 20px;
@@ -169,16 +169,16 @@ nav ul li a.active {
 }
 
 #authLink:hover, #signupLink:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--dark-color);
     transform: translateY(-2px);
 }
 
 /* Logout Button Style */
 .logout-btn {
     background-color: transparent;
-    border: 1px solid var(--white);
-    color: var(--white);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
     padding: 0.4rem 0.8rem !important;
     font-size: 0.9rem !important;
     border-radius: 20px;
@@ -187,16 +187,16 @@ nav ul li a.active {
 }
 
 .logout-btn:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--dark-color);
     transform: translateY(-2px);
 }
 
 /* Profile Link Style */
 #profileLink {
     background-color: transparent;
-    border: 1px solid var(--white);
-    color: var(--white);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
     padding: 0.4rem 0.8rem !important;
     font-size: 0.9rem !important;
     border-radius: 20px;
@@ -204,8 +204,8 @@ nav ul li a.active {
 }
 
 #profileLink:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--dark-color);
     transform: translateY(-2px);
 }
 
