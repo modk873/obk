@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدول العربية - أرشيف الدول العربية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #fff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/arab-world-map.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 12rem 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            opacity: 0.9;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin: -50px auto 3rem;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .search-form input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .search-form button {
+            padding: 1rem 2rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .search-form button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Countries Section */
+        .countries-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Country Card */
+        .country-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .country-header {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .country-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .country-card:hover .country-header img {
+            transform: scale(1.1);
+        }
+
+        .country-flag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .country-card:hover .country-flag {
+            transform: scale(1.1);
+        }
+
+        .country-content {
+            padding: 2rem;
+        }
+
+        .country-content h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .country-info {
+            margin-bottom: 2rem;
+        }
+
+        .country-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .country-info i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .country-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .country-links a {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .country-links a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 8rem 0;
+                margin-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            .search-section {
+                margin: -30px auto 2rem;
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .countries-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>أرشيف الدول العربية</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="documents.html">الوثائق</a></li>
+                    <li><a href="about.html">عن الموقع</a></li>
+                    <li><a href="signin.html" id="authLink">تسجيل الدخول</a></li>
+                    <li><a href="signup.html" id="signupLink">إنشاء حساب</a></li>
+                    <li><a href="profile.html" id="profileLink" style="display: none;">الملف الشخصي</a></li>
+                    <li><a href="#" id="logoutLink" style="display: none;" class="logout-btn">تسجيل الخروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>الدول العربية</h1>
+                <p>استكشف تاريخ وتراث الدول العربية</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="countries-section">
+        <div class="container">
+            <div class="search-section">
+                <form class="search-form">
+                    <input type="text" placeholder="ابحث عن دولة...">
+                    <button type="submit"><i class="fas fa-search"></i> بحث</button>
+                </form>
+            </div>
+            <h2>الدول العربية</h2>
+            <div class="countries-grid">
+                <!-- مصر -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/egypt-landmark.jpg" alt="مصر">
+                        <img src="images/egypt-flag.png" alt="علم مصر" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>مصر</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: القاهرة</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 104 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 28 فبراير 1922</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="egypt.html">استكشف المزيد</a>
+                            <a href="documents.html?country=egypt">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المملكة العربية السعودية -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/saudi-landmark.jpg" alt="السعودية">
+                        <img src="images/saudi-flag.png" alt="علم السعودية" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>المملكة العربية السعودية</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: الرياض</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 35 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ التأسيس: 23 سبتمبر 1932</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="saudi.html">استكشف المزيد</a>
+                            <a href="documents.html?country=saudi">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الإمارات العربية المتحدة -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/uae-landmark.jpg" alt="الإمارات">
+                        <img src="images/uae-flag.png" alt="علم الإمارات" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>الإمارات العربية المتحدة</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: أبوظبي</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 9.9 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ التأسيس: 2 ديسمبر 1971</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="uae.html">استكشف المزيد</a>
+                            <a href="documents.html?country=uae">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- العراق -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/iraq-landmark.jpg" alt="العراق">
+                        <img src="images/iraq-flag.png" alt="علم العراق" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>العراق</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: بغداد</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 41 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 3 أكتوبر 1932</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="iraq.html">استكشف المزيد</a>
+                            <a href="documents.html?country=iraq">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- سوريا -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/syria-landmark.jpg" alt="سوريا">
+                        <img src="images/syria-flag.png" alt="علم سوريا" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>سوريا</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: دمشق</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 18 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 17 أبريل 1946</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="syria.html">استكشف المزيد</a>
+                            <a href="documents.html?country=syria">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- لبنان -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/lebanon-landmark.jpg" alt="لبنان">
+                        <img src="images/lebanon-flag.png" alt="علم لبنان" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>لبنان</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: بيروت</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 6.8 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 22 نوفمبر 1943</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="lebanon.html">استكشف المزيد</a>
+                            <a href="documents.html?country=lebanon">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المغرب -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/morocco-landmark.jpg" alt="المغرب">
+                        <img src="images/morocco-flag.png" alt="علم المغرب" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>المغرب</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: الرباط</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 37 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 2 مارس 1956</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="morocco.html">استكشف المزيد</a>
+                            <a href="documents.html?country=morocco">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- موريتانيا -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/mauritania-landmark.jpg" alt="موريتانيا">
+                        <img src="images/mauritania-flag.png" alt="علم موريتانيا" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>موريتانيا</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: نواكشوط</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 4.6 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 28 نوفمبر 1960</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="mauritania.html">استكشف المزيد</a>
+                            <a href="documents.html?country=mauritania">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- عمان -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/oman-landmark.jpg" alt="عمان">
+                        <img src="images/oman-flag.png" alt="علم عمان" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>عمان</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: مسقط</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 5.1 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 20 ديسمبر 1951</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="oman.html">استكشف المزيد</a>
+                            <a href="documents.html?country=oman">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- اليمن -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/yemen-landmark.jpg" alt="اليمن">
+                        <img src="images/yemen-flag.png" alt="علم اليمن" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>اليمن</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: صنعاء</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 30 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 30 نوفمبر 1967</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="yemen.html">استكشف المزيد</a>
+                            <a href="documents.html?country=yemen">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الكويت -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/kuwait-landmark.jpg" alt="الكويت">
+                        <img src="images/kuwait-flag.png" alt="علم الكويت" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>الكويت</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: الكويت</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 4.3 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 19 يونيو 1961</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="kuwait.html">استكشف المزيد</a>
+                            <a href="documents.html?country=kuwait">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- البحرين -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/bahrain-landmark.jpg" alt="البحرين">
+                        <img src="images/bahrain-flag.png" alt="علم البحرين" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>البحرين</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: المنامة</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 1.5 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 15 أغسطس 1971</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="bahrain.html">استكشف المزيد</a>
+                            <a href="documents.html?country=bahrain">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- جزر القمر -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/comoros-landmark.jpg" alt="جزر القمر">
+                        <img src="images/comoros-flag.png" alt="علم جزر القمر" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>جزر القمر</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: موروني</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 850 ألف</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 6 يوليو 1975</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="comoros.html">استكشف المزيد</a>
+                            <a href="documents.html?country=comoros">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- جيبوتي -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/djibouti-landmark.jpg" alt="جيبوتي">
+                        <img src="images/djibouti-flag.png" alt="علم جيبوتي" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>جيبوتي</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: جيبوتي</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 1 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 27 يونيو 1977</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="djibouti.html">استكشف المزيد</a>
+                            <a href="documents.html?country=djibouti">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الصومال -->
+                <div class="country-card">
+                    <div class="country-header">
+                        <img src="images/somalia-landmark.jpg" alt="الصومال">
+                        <img src="images/somalia-flag.png" alt="علم الصومال" class="country-flag">
+                    </div>
+                    <div class="country-content">
+                        <h3>الصومال</h3>
+                        <div class="country-info">
+                            <p><i class="fas fa-map-marker-alt"></i> العاصمة: مقديشو</p>
+                            <p><i class="fas fa-users"></i> عدد السكان: 16 مليون</p>
+                            <p><i class="fas fa-language"></i> اللغة: العربية</p>
+                            <p><i class="fas fa-calendar-alt"></i> تاريخ الاستقلال: 1 يوليو 1960</p>
+                        </div>
+                        <div class="country-links">
+                            <a href="somalia.html">استكشف المزيد</a>
+                            <a href="documents.html?country=somalia">الوثائق</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>أرشيف الدول العربية</h3>
+                    <p>موقع شامل يوثق تاريخ وإنجازات ومعالم الدول العربية</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <h4>مصادر ومراجع</h4>
+                        <li><a href="https://www.arab.org/">الموقع الرسمي للجامعة العربية</a></li>
+                        <li><a href="https://www.unesco.org/">منظمة اليونسكو</a></li>
+                    </ul>
+                </div>
+                <div class="contact-info">
+                    <h3>تواصل معنا</h3>
+                    <p><i class="fas fa-envelope"></i> info@arabcountriesarchive.com</p>
+                    <p><i class="fas fa-phone"></i> 04042007</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 أرشيف الدول العربية. جميع الحقوق محفوظة لمحمد عصام ومحمد العمري والهاجري والجلهم وأنس.</p>
+                <p>تصميم وتطوير: محمد عصام ومحمد العمري والهاجري والجلهم وأنس</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
